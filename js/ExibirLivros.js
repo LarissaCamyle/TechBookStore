@@ -1,11 +1,20 @@
 const containerLivros = document.querySelector("#livros");
+const valorTotalDisponiveis = document.querySelector("#valor_total_livros_disponiveis");
+
 
 export function exibirLivrosNaTela(listaDeLivros){
+    //limpa sempre o html
+    valorTotalDisponiveis.innerHTML = ""
+    containerLivros.innerHTML = ""
 
     listaDeLivros.forEach(livro => {
+        //let disponibilidade = verificarDisponibilidade(livro);
+
+        let disponibilidade = livro.quantidade > 0 ? 'livro__imagens' : 'livro__imagens indisponivel'
+
         containerLivros.innerHTML += `
         <div class="livro">       
-            <img class="livro__imagens" src="${livro.imagem}" alt="${livro.alt}"/>
+            <img class="${disponibilidade}" src="${livro.imagem}" alt="${livro.alt}"/>
             <h2 class="livro__titulo">
                 ${livro.titulo}
             </h2>
